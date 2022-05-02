@@ -1,0 +1,56 @@
+/*Colors:
+#07031A - Black
+#4F8A8B - Green
+#FBD46D - Yellow
+#F4F6FF - Blue
+ */
+
+body {
+    background-color: #F4F6FF;
+}
+
+.inline {
+    display: inline-flex;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.centered-block {
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 600px; */
+}
+
+.bottom-margin-none {
+    margin-bottom: 0%;
+}
+
+.top-margin-sm {
+    margin-top: 15px;
+}
+
+.seperator {
+    border-bottom: dotted;
+    border-color: #4F8A8B;
+    border-width: 10px 0;
+    margin: 15px auto;
+    width: 50%;
+}
+
+.blockquote {
+    margin: 1em 3em;
+    color: #999;
+    border-left: 2px solid #999;
+    padding-left: 1em;
+}
+
+.view {
+    width: 80%;
+}
+
+.italic {
+    font-style: italic;
+    text-decoration: none;
+}
