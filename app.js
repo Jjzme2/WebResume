@@ -17,7 +17,6 @@ app.set('view engine', 'ejs');
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Variable declarations~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 const portID = 3000;
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Schema declarations~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 const year = new Date().getFullYear();
@@ -28,10 +27,19 @@ const quoteSchema = new mongoose.Schema({
     cite: { type: String, required: false }
 });
 
+const skillSchema = new mongoose.Schema({
+    skillName: { type: String, required: true },
+    level: { type: Number, required: true }
+});
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Model declarations~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 
 const Quote = mongoose.model('Quote', quoteSchema);
+const Skill = mongoose.model('Skill', skillSchema);
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Functions~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 
 
 
@@ -58,6 +66,26 @@ app.route("/")
             }
         })
     })
+
+app.route("/skills")
+    .get(function(req, res) {
+        let ranQuote = "";
+        Skill.find({}, function(err, mySkills) {
+            if (err) {
+                console.log(err);
+            }
+            // } else {
+            //     let ran = Math.random();
+            //     let index = Math.floor(ran * foundObj.length);
+            //     ranQuote = mySkills[index];
+
+            res.render('skills', {
+                page: "skills",
+                curYear: year,
+                skills: mySkills,
+            });
+        })
+    });
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~app.listen~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
 

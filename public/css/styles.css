@@ -9,6 +9,15 @@ body {
     background-color: #F4F6FF;
 }
 
+.controlled-box {
+    max-height: 150px;
+}
+
+.primary-card {
+    background-color: #07031A;
+    color: #F4F6FF;
+}
+
 .inline {
     display: inline-flex;
 }
